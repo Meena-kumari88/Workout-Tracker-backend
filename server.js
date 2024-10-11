@@ -21,6 +21,11 @@ mongoose.connect(mongoURI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB connection error:", err));
 
+// Root route (fix for 'Cannot GET /')
+app.get('/', (req, res) => {
+  res.send('Welcome to the Workout Tracker API');
+});
+
 // Import Routes
 const userRoutes = require('./routes/users');
 const workoutRoutes = require('./routes/workouts');
